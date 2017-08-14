@@ -39,22 +39,67 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  context "GET show" do 
+  context 'when not logged in user' do 
     let!(:user) { create(:user) }
-    let!(:params) { { id: user.id } }
 
-    it "assigns user variable" do 
-      get :show, params: params
-      expect(assigns(:user)).to eq(user)
+
+    context 'GET show' do
+      let!(:params) { { id: user.id } }
+      before { get :show, params: params }
+      
+      it 'redirects to login page' do 
+        should redirect_to login_path
+      end
+
+      it 'set flash danger' do 
+        should set_flash[:danger]
+      end
+    end
+
+    context 'GET index' do 
+      before { get :index } 
+
+      it 'redirects to login page' do 
+        should redirect_to login_path
+      end
+
+      it 'set flash danger' do 
+        should set_flash[:danger]
+      end
     end
   end
 
-  context 'GET index' do
-    let!(:user) { create(:user) } 
-    before { get :index }
+  context 'when logged in user' do 
+    let!(:current_user){ create(:user) }
+    let!(:other_user){ create(:user) }
+    before{ @request.session[:user_id] = current_user.id }
 
-    it 'assigns users variable' do 
-      expect(assigns(:users)).to include(User.first)
+    context 'GET show his own page' do 
+      before{ get :show, params: { id: current_user.id } }
+
+      it 'renders users/show template' do 
+        should render_template 'users/show'
+      end 
+    end
+
+    context 'GET show other user page' do 
+      before{ get :show, params: { id: other_user.id } }
+
+      it 'redirects to his own page' do 
+        should redirect_to current_user
+      end
+
+      it 'set flash info' do 
+        should set_flash[:info]
+      end
+    end
+
+    context 'GET index' do 
+      before{ get :index }
+
+      it 'renders users/index template' do 
+        should render_template 'users/index'
+      end
     end
   end
 end
