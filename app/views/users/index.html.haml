@@ -8,10 +8,11 @@
         %th
           Email
       - @users.each do |user|
-        %td 
-          = user.name
-        %td 
-          = user.email
+        %tr
+          %td 
+            = user.name
+          %td 
+            = user.email
 
 
         
