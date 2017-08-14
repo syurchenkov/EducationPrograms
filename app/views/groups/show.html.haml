@@ -1,0 +1,14 @@
+%h1.text-center 
+  Group
+.row
+  .col-md-10.col-md-offset-1
+    .jumbotron
+      .group
+        .links
+          = link_to 'NEW', new_group_path
+          |
+          = link_to 'EDIT', edit_group_path(@group)
+          |
+          = link_to 'ALL', groups_path
+        .title 
+          = @group.title

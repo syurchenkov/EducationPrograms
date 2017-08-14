@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get '/login',     to: 'sessions#new'
 
   post '/login',    to: 'sessions#create'
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create]
   resources :education_programs
+  resources :groups
 end
