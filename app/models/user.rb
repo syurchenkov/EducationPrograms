@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true 
 
+  has_many :user_groups
+  has_many :groups, through: :user_groups
+
   before_save { self.email = email.downcase }
   before_save { self.name  = name.strip }
 end

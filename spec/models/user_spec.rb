@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user){ build(:user) }
 
+  it { should have_many :groups }
+
   context 'validations' do 
     subject { build(:user) }
     
