@@ -13,6 +13,7 @@ body {
   padding: 4px 8px 10px;
 
   .title {
+    margin-top: 10px;
     margin-bottom: 4px;
     font-size: 24px;
     line-height: 1;
@@ -22,11 +23,16 @@ body {
   }
 
   .desc {
+    margin-top: 20px;
     margin-bottom: 4px;
     font-size: 20px;
     line-height: 1;
     color: #262626;
     vertical-align: middle;
     text-align: center;
+
+    span {
+      color: #000;
+    }
   }
 }

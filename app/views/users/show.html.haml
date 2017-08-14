@@ -1,0 +1,11 @@
+%h1.text-center User page
+.row
+  .col-md-6.col-md-offset-3
+    .jumbotron.info
+      .title
+        = @user.name
+      .desc
+        %span 
+          Email:  
+        = @user.email
+        
