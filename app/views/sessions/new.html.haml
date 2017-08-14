@@ -1,0 +1,8 @@
+%h1 Log In 
+.row 
+  .col-md-6.col-md-offset-3
+    .jumbotron 
+      = simple_form_for(:session, url: login_path) do |f|
+        = f.input  :email
+        = f.input  :password
+        = f.button :submit, 'Log in', class: "btn btn-primary"
