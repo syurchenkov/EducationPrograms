@@ -12,5 +12,9 @@ FactoryGirl.define do
     factory :invalid_user do 
       email  'invalid_user.com'
     end
+
+    factory :admin do 
+      admin true
+    end
   end 
 end
