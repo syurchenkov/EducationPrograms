@@ -1,0 +1,32 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+/* users */
+
+.info {
+  padding: 4px 8px 10px;
+
+  .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .desc {
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
