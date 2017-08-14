@@ -36,3 +36,30 @@ body {
     }
   }
 }
+
+/* education programs */
+
+.education_program {  
+  .title {
+    margin-top: 20px;
+    margin-bottom: 4px;
+    font-size: 40px;
+    line-height: 1;
+    color: #333;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-bottom: 4px;
+    font-size: 27px;
+    line-height: 1;
+    color: #222;
+    vertical-align: middle;
+  }
+
+  .links {
+    font-size: 20px;
+  }
+}

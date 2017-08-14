@@ -1,0 +1,16 @@
+%h1.text-center 
+  Add New Education Program
+.row
+  .col-md-10.col-md-offset-1
+    .jumbotron
+      .education_program
+        .links
+          = link_to 'NEW', new_education_program_path
+          |
+          = link_to 'EDIT', edit_education_program_path(@education_program)
+          |
+          = link_to 'ALL', education_programs_path
+        .title 
+          = @education_program.title
+        .content
+          = @education_program.content

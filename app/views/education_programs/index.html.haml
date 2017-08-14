@@ -1,0 +1,23 @@
+%h1.text-center
+  Education Programs
+.row
+  .col-md-10.col-md-offset-1
+    .jumbotron
+      %table.table
+        %tr
+          %th
+            Title
+          %th 
+            Links
+          
+        - @education_programs.each do |e_prog|
+          %tr
+            %td 
+              = e_prog.title
+            %td
+              = link_to 'SHOW', e_prog
+              - if current_user.admin?
+                | 
+                = link_to 'EDIT', edit_education_program_path(e_prog)
+                | 
+                = link_to 'REMOVE', e_prog, method: :delete, data: { confirm: 'You sure?' }
