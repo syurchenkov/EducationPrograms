@@ -1,6 +1,6 @@
 class UserGroupsController < ApplicationController  
   before_action :logged_in_user
-  before_action :admin_user, except: [:show, :index]
+  before_action :admin_user
 
   def create
     @user_group = UserGroup.new(user_group_params)
