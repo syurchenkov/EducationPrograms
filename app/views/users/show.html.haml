@@ -8,4 +8,19 @@
         %span 
           Email:  
         = @user.email
+      .desc
+        Member of groups
+      %table.table 
+        %tr 
+          %th
+            Title
+          %th
+            Link
+        - @groups.each do |group|
+          %tr
+            %td 
+              = group.title
+            %td
+              = link_to 'SHOW', group
+
         
