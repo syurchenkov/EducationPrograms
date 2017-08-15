@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @groups = @user.groups
     @educational_relationship = EducationalRelationship.new()
     @education_programs = @user.education_programs
+    @group_education_programs = @user.groups.map{ |group| group.education_programs }.flatten
   end
 
   def index

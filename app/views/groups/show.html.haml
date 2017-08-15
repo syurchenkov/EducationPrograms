@@ -8,6 +8,11 @@
           = f.association :group, as: :hidden
           = f.association :user
           = f.button :submit, 'ADD USER TO GROUP'
+    - if current_user.admin?
+      .jumbotron
+        = simple_form_for(@educational_relationship, url: add_ep_group_path(@group)) do |f|
+          = f.association :education_program
+          = f.button :submit, 'ADD EDUCATION PROGRAM '
     .jumbotron
       .group
         .title 
@@ -38,3 +43,17 @@
                 | 
                 = link_to 'REMOVE FROM GROUP', user.user_groups.find_by(group_id: @group.id), method: :delete, data: { confirm: 'You sure?' }
       = will_paginate @users
+      .desc
+        Education programs
+      %table.table
+        %tr
+          %th
+            Title
+          %th 
+            Link
+        - @education_programs.each do |education_program|
+          %tr 
+            %td 
+              = education_program.title
+            %td
+              = link_to 'SHOW', education_program

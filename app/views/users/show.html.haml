@@ -43,5 +43,20 @@
               = education_program.title
             %td
               = link_to 'SHOW', education_program
+      %br
+      .desc
+        Group education programs
+      %table.table
+        %tr
+          %th
+            Title
+          %th 
+            Link
+        - @group_education_programs.each do |education_program|
+          %tr 
+            %td 
+              = education_program.title
+            %td
+              = link_to 'SHOW', education_program
 
         

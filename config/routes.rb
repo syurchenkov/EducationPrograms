@@ -8,10 +8,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create] do 
     member do 
-     post '/add_ep', to: 'users#add_ep'
+      post '/add_ep', to: 'users#add_ep'
     end
   end
   resources :education_programs
-  resources :groups 
+  resources :groups do 
+    member do 
+      post '/add_ep', to: 'groups#add_ep'
+    end
+  end
   resources :user_groups, only: [:create, :destroy]
 end
