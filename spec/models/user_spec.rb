@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   let(:user){ build(:user) }
 
   it { should have_many :groups }
+  it { should have_many :educational_relationships}
+  it { should have_many(:education_programs).through(:educational_relationships) }
 
   context 'validations' do 
     subject { build(:user) }

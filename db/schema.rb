@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815055009) do
+ActiveRecord::Schema.define(version: 20170815091650) do
 
   create_table "education_programs", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "educational_relationships", force: :cascade do |t|
+    t.string "educational_type"
+    t.integer "educational_id"
+    t.integer "education_program_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["education_program_id"], name: "index_on_education_program_id"
+    t.index ["educational_id", "educational_type", "education_program_id"], name: "index_unique", unique: true
+    t.index ["educational_type", "educational_id"], name: "index_on_educational_type_and_id"
   end
 
   create_table "groups", force: :cascade do |t|

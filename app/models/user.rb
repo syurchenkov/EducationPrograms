@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :groups, through: :user_groups
 
+  has_many :educational_relationships, as: :educational
+  has_many :education_programs, through: :educational_relationships
+
   before_save { self.email = email.downcase }
   before_save { self.name  = name.strip }
 end
