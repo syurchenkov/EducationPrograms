@@ -8,6 +8,8 @@ class GroupsController < ApplicationController
   end
 
   def show 
+    @users = @group.users.paginate(page: params[:page])
+    @user_group = UserGroup.new(group: @group)
   end
 
   def new

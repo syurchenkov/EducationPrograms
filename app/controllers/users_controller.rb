@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      unless current_user?(@user) 
+      unless current_user?(@user) || (logged_in? && current_user.admin?)
         if logged_in?
           flash[:info] = 'You don\'t have permission.'
           redirect_to(current_user)

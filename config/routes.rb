@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create]
   resources :education_programs
-  resources :groups
+  resources :groups 
+  resources :user_groups, only: [:create, :destroy]
 end

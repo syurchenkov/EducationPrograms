@@ -2,13 +2,39 @@
   Group
 .row
   .col-md-10.col-md-offset-1
+    - if current_user.admin?
+      .jumbotron
+        = simple_form_for(@user_group) do |f|
+          = f.association :group, as: :hidden
+          = f.association :user
+          = f.button :submit, 'ADD USER TO GROUP'
     .jumbotron
       .group
+        .title 
+          = @group.title
         .links
           = link_to 'NEW', new_group_path
           |
           = link_to 'EDIT', edit_group_path(@group)
           |
           = link_to 'ALL', groups_path
-        .title 
-          = @group.title
+        .advert
+          Group Members
+      = will_paginate @users
+      %table.table
+        %tr
+          %th
+            Title
+          %th 
+            Links
+          
+        - @users.each do |user|
+          %tr
+            %td 
+              = user.name
+            %td
+              = link_to 'SHOW', user
+              - if current_user.admin?
+                | 
+                = link_to 'REMOVE FROM GROUP', user.user_groups.find_by(group_id: @group.id), method: :delete, data: { confirm: 'You sure?' }
+      = will_paginate @users
