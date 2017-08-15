@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create] do 
+    member do 
+     post '/add_ep', to: 'users#add_ep'
+    end
+  end
   resources :education_programs
   resources :groups 
   resources :user_groups, only: [:create, :destroy]

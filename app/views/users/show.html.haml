@@ -8,6 +8,12 @@
         %span 
           Email:  
         = @user.email
+      - if current_user.admin?
+        .desc
+          = simple_form_for(@educational_relationship, url: add_ep_user_path(@user)) do |f|
+            = f.association :education_program
+            = f.button :submit, 'ADD EDUCATION PROGRAM '
+      %br
       .desc
         Member of groups
       %table.table 
@@ -22,5 +28,20 @@
               = group.title
             %td
               = link_to 'SHOW', group
+      %br
+      .desc
+        Individual education programs
+      %table.table
+        %tr
+          %th
+            Title
+          %th 
+            Link
+        - @education_programs.each do |education_program|
+          %tr 
+            %td 
+              = education_program.title
+            %td
+              = link_to 'SHOW', education_program
 
         
